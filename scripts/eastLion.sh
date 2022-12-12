@@ -50,7 +50,6 @@ if [ $SYSTEM == 'gsc' ]
 then #Cluster
 # Copy over files for analysis on cluster node
 
-	# Working directories
 	export WORK=$TMP # work on temporary space
 
 	# BT2 Genome Index (copy to work space)
@@ -279,7 +278,7 @@ fi # Alignment Bypass Flow Control Ends
 	mv .tmp alignment
 
 	# Move input/output bam files back to main LIB directory
-	mv alignment/input.bam ./input.bam
+	cp alignment/input.bam ./input.bam
 	ln -s ./alignment/$OUTPUT.bam ./$OUTPUT.bam
 	ln -s ./alignment/$OUTPUT.bam.bai ./$OUTPUT.bam.bai
 
@@ -483,14 +482,14 @@ fi # End chimera read tool flow
 		echo " Run ChimANNSort"
 		echo "     Rscript chimANNSort.R $libName.pc.lcsv $libName.ann.lion $ANNMODEL"
 
-		$lBIN/Rscript $SCRIPTS/ChimericReadTool/chimAnnSort.R $libName.pc.lcsv $libName.ann.lion $ANNMODEL
+		Rscript $SCRIPTS/ChimericReadTool/chimAnnSort.R $libName.pc.lcsv $libName.ann.lion $ANNMODEL
 
 	else	
 		# Chimeric Filtering using thresholds
 		echo "  Run ChimSort"
 		echo "     Rscript chimSort.R $libName.pc.lcsv $libName.lion $mappedReads $CRT"
 	
-		$lBIN/Rscript $SCRIPTS/ChimericReadTool/chimSort.R $libName.pc.lcsv $libName.lion $mappedReads $CRT
+		Rscript $SCRIPTS/ChimericReadTool/chimSort.R $libName.pc.lcsv $libName.lion $mappedReads $CRT
 
 		# Sanity Check
 		if [ -s $libName.lion ] # was the lions file generated
@@ -512,7 +511,7 @@ fi # End chimera read tool flow
 		if [ $SYSTEM == 'gsc' ]
 		then
 			# discard input bam file (which was copied to tmp)
-			rm $WORK/$INPUT
+			#rm $WORK/$INPUT
 			# copy files to output
 			cd $BASE
 			mv $WORK/* $outDir
@@ -577,14 +576,14 @@ else # LIONS file already exists
 			echo " Run ChimANNSort"
 			echo "     Rscript chimANNSort.R $libName.pc.lcsv $libName.$RUNID.ann.lion $ANNMODEL"
 
-			$lBIN/Rscript $SCRIPTS/ChimericReadTool/chimAnnSort.R $libName.pc.lcsv $libName.$RUNID.ann.lion $ANNMODEL
+			Rscript $SCRIPTS/ChimericReadTool/chimAnnSort.R $libName.pc.lcsv $libName.$RUNID.ann.lion $ANNMODEL
 
 		else	
 			# Chimeric Filtering using thresholds
 			echo "  Run ChimSort"
 			echo "     Rscript chimSort.R $libName.pc.lcsv $libName.$RUNID.lion $mappedReads $CRT"
 	
-			$lBIN/Rscript $SCRIPTS/ChimericReadTool/chimSort.R $libName.pc.lcsv $libName.$RUNID.lion $mappedReads $CRT
+			Rscript $SCRIPTS/ChimericReadTool/chimSort.R $libName.pc.lcsv $libName.$RUNID.lion $mappedReads $CRT
 
 			# Sanity Check
 			if [ -s $libName.$RUNID.lion ] # was the lions file generated

@@ -102,7 +102,7 @@ done
 	echo " Run chimGroup.R"
 	echo "   Rscript chimGroup.R $pLionFile $INPUT_LIST $rmStats $CG"
 
-	$lBIN/Rscript $SCRIPTS/ChimericAnalysis/chimGroup.R $pLionFile $INPUT_LIST $rmStats $CG
+	Rscript $SCRIPTS/ChimericAnalysis/chimGroup.R $pLionFile $INPUT_LIST $rmStats $CG
 
 
 # UCSC Painter ------------------------------------------------------
