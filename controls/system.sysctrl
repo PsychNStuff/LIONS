@@ -9,7 +9,7 @@
 
 	export SCRIPTS="$BASE/scripts"
 
-	export TMP="/tmp/artmp" # Temporary working directory [Cluster-only]
+	export TMP=$PWD # Temporary working directory [Cluster-only]
 
 	export RESOURCES="$BASE/resources/$INDEX"
 
@@ -19,7 +19,7 @@
 
 # SYSTEM --------------------------------------------------
 # Performance
-	export SYSTEM='glitch' # System Name
+	export SYSTEM='local' # System Name
 	# <gsc> = run with qsub commands on the gsc genesis cluster
 	# <local> = run on local machine.
 
@@ -28,8 +28,8 @@
 # Cluster Specific Commands
 	if [ $SYSTEM == 'gsc' ]
 	then # Cluster QSUB
-		export CLUSTER='1'
-		export QSUB="qsub -S /bin/bash -V -m e -M ababaian@bccrc.ca -pe ncpus $THREADS -l mem_free=10G -l mem_token=10G -l h_vmem=10G -l tmp_token=35G"
+		export CLUSTER='20'
+		export QSUB="sbatch slurm script" #still in dev
 
 	else # Local (no) QSUB
 		export CLUSTER='0'
@@ -38,14 +38,15 @@
 
 # SOFTWARE PATHS ------------------------------------------
 # For all software below, enter in where LIONS should access it on this system
+# Currently set to megan's system
 
-	export SAMTOOLS='samtools_0.1.18' # Samtools (less than version 1.x)
-	export BAM2FASTX='bam2fastx' # part of tophat2
-	export TOPHAT2='tophat2'
-	export BOWTIE2='bowtie2'
-	export BOWTIE_BUILD='bowtie2-build' # build function for bowtie2
+	export SAMTOOLS='/scratch/mhall/samtools-0.1.18/samtools' # Samtools (less than version 1.x)
+	export BAM2FASTX='/scratch/mhall/tophat-2.1.1.OSX_x86_64/bam2fastx' # part of tophat2
+	export TOPHAT2='/scratch/mhall/tophat-2.1.1.OSX_x86_64/tophat2'
+	export BOWTIE2='/scratch/mhall/bowtie2-2.5.0/bowtie2'
+	export BOWTIE_BUILD='/scratch/mhall/bowtie2-2.5.0/bowtie2-build' # build function for bowtie2
 	export CUFFLINKS='cufflinks'
-	export PYTHON3='python3'
+	export PYTHON3='/home/mhall/anaconda3/bin/python3'
 	export JAVA='java'
-	export RSCRIPT='Rscript'
+	export RSCRIPT='/scratch/mhall/R/Rscript'
 	export WIG2BIGWIG="$BASE/software/wigToBigWig" # packed in ~/software/

@@ -6,10 +6,10 @@
 # Adjust these parameters to run for a particular project
 
 # The LIONS home folder
-	export BASE=$PWD # Base folder for ~/LIONS/
+	export BASE='/scratch/mhall/LIONS' # Base folder for ~/LIONS/
 
 # PROJECT -------------------------------------------------
-	export PROJECT='sandbox' # Project Name
+	export PROJECT='project_name' # Project Name
 
 	export INPUT_LIST="$BASE/controls/input.list" # <libName> <libPath> <group> csv file
 	# <libPath> is one of
@@ -17,7 +17,7 @@
 	#     B) Sorted paired fastQ files. Comma seperated.
 	#        '/home/lib.fq1,/home/lib.fq2'
 
-	export CALLSETTINGS='oncoexaptation'
+	export CALLSETTINGS='driverTE'
 	# Pre-set TE-initiation classification settings
         # - 'oncoexapatation'  : Detect high abundance TE isoforms
         # - 'transcriptomeANN' : Artifical Neural Network based classifier
@@ -28,15 +28,15 @@
 
 # RESOURCES ----------------------------------------------
 
-	export INDEX='hg19' # Genome resource set to use
+	export INDEX='hg38' # Genome resource set to use
 	#  Should be a ~/LIONS/resources/<INDEX>/ folder
 	#  See README file 'RESOURCE INITIALIZATION' to set up
 	#  the folder prior to running LIONS the first time
 
-	export GENESET='refSeq_hg19.ucsc' # Reference Gene Set. UCSC format
+	export GENESET='refseq_hg38.ucsc' # Reference Gene Set. UCSC format
 	# in ~/LIONS/resources/<INDEX>/annotation/<GENESET>	
 
-	export REPEATMASKER='rm_hg19.ucsc' # RepeatMasker. UCSC format
+	export REPEATMASKER='rm_hg38.ucsc' # RepeatMasker. UCSC format
 	# in ~/LIONS/resources/<INDEX>/repeat/<REPEATMASKER>
 
 # SYSTEM --------------------------------------------------
