@@ -1,5 +1,6 @@
 # LIONS
 ## Detecting TE-initiated transcripts from paired-end RNAseq
+### This is a fork under development for use in a BASH environment with slurm. [Visit the original LIONS GitHub here](https://github.com/ababaian/LIONS).
 
 
 #### [LIONS Publication](https://doi.org/10.1093/bioinformatics/btz130) ( [sci-hub link](https://sci-hub.tw/10.1093/bioinformatics/btz130) )
