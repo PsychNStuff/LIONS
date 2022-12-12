@@ -28,13 +28,16 @@ echo '''                             _   _
                             \/\_/\/
 '''
 echo ''
-
+module load java/jdk-1.8.0_91
+module load cufflinks/2.2.1
+module load Java/14.0.2
+module load R/3.6.2
 # import default parameters
 
 # Read parameter file (imports run parameters)
     echo " Importing default file:"
     echo "      ./LIONS/controls/parameter.ctrl"
-    export PARAMETER="./controls/parameter.ctrl"
+    export PARAMETER="/scratch/mhall/LIONS/controls/parameter.ctrl"
     echo ''
 # Run parameter script
     source $PARAMETER # works in bash only
