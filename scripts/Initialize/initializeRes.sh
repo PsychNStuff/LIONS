@@ -122,7 +122,7 @@ then
 	fi
 
 	echo " rmStats.Rdata: statistics data frames not found. Generating..."
-	$lBIN/Rscript $SCRIPTS/Initialize/rmResource.R $repeatMasker $makeChimericSearch
+	Rscript $SCRIPTS/Initialize/rmResource.R $repeatMasker $makeChimericSearch
 
 	# Add string input to rmResource to generate ForChimeric Search file
 	# i.e. 1 --> make it, 0 --> don't make it
